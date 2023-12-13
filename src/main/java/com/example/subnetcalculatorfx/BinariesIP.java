@@ -1,8 +1,5 @@
 package com.example.subnetcalculatorfx;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
 public class BinariesIP {
     String[] ipSplit;
     int okt1Int;
@@ -18,7 +15,8 @@ public class BinariesIP {
 
 
     private MainController mainController;
-
+    BinariesSNM binariesSNM;
+    Calculation calculation;
 
     public BinariesIP(MainController mainController) {
         this.mainController = mainController;
@@ -36,6 +34,7 @@ public class BinariesIP {
                 String okt4 = ipSplit[3];
 
                 okt1Int = Integer.parseInt(okt1);
+                System.out.println("okt1Int: " + okt1Int);
                 okt2Int = Integer.parseInt(okt2);
                 okt3Int = Integer.parseInt(okt3);
                 okt4Int = Integer.parseInt(okt4);

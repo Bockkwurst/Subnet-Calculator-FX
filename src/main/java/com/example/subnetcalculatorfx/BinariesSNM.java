@@ -14,10 +14,13 @@ public class BinariesSNM {
 
 
     private MainController mainController;
+    BinariesIP binariesIP;
+    Calculation calculation;
 
 
     public BinariesSNM(MainController mainController) {
         this.mainController = mainController;
+
     }
 
     public void stringToIntSNM() {

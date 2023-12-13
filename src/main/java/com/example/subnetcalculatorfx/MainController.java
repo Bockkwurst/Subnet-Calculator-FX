@@ -3,13 +3,16 @@ package com.example.subnetcalculatorfx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     @FXML
@@ -23,23 +26,28 @@ public class MainController implements Initializable {
     @FXML
     private Label snmLabel;
     @FXML
-    private Label netIDLabel;
+    Label netIdLabel;
     @FXML
-    private Label bcLabel;
+    Label bcLabel;
     @FXML
-    private Label hostLabel;
+    Label hostLabel;
     @FXML
-    private Label rangeLabel;
+    Label rangeLabel1;
     @FXML
-     Label errorLabel;
+    Label rangeLabel;
     @FXML
-     Label ipBinLabel;
+    Label errorLabel;
+    @FXML
+    Label ipBinLabel;
     @FXML
     Label snmBinLabel;
     private String ipAddress;
     public String selectedSubnetMask;
     private BinariesIP binariesIP;
     private BinariesSNM binariesSNM;
+    //private Calculation calculation;
+    Calculation calculation = new Calculation(this);
+
 
 
     private String[] snmArray = {"0.0.0.0", "128.0.0.0", "192.0.0.0", "224.0.0.0", "240.0.0.0", "248.0.0.0", "252.0.0.0", "254.0.0.0", "255.0.0.0",
@@ -49,9 +57,6 @@ public class MainController implements Initializable {
             "255.255.255.252", "255.255.255.254", "255.255.255.255"};
 
 
-    public void ipInput() {
-
-    }
 
     public MainApplication main;
 
@@ -65,6 +70,7 @@ public class MainController implements Initializable {
         snmBox.getItems().addAll(snmArray);
         binariesIP = new BinariesIP(this);
         binariesSNM = new BinariesSNM(this);
+        calculation = new Calculation(this);
     }
 
     public void validate() {
@@ -116,5 +122,6 @@ public class MainController implements Initializable {
         binariesSNM.decToBin4();
         System.out.println(binariesSNM.binResult1Snm + ", " + binariesSNM.binResult2Snm + ", " + binariesSNM.binResult3Snm + ", " + binariesSNM.binResult4Snm);
         binariesSNM.showResult();
+        calculation.calculations(ipAddress);
     }
 }
